@@ -3,7 +3,6 @@ import { computed, ref, onMounted, onUnmounted } from 'vue';
 import type { FreshnessTimestampProps, FreshnessLevel } from './FreshnessTimestamp.types';
 
 const props = withDefaults(defineProps<FreshnessTimestampProps>(), {
-  now: undefined,
   staleThreshold: 10_000,
   expiredThreshold: 30_000,
 });

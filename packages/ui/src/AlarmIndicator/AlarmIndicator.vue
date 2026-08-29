@@ -28,7 +28,7 @@ const ariaLabel = computed(() => `${props.severity} alarm: ${props.label}`);
     <FreshnessTimestamp
       v-if="since !== undefined"
       :timestamp="since"
-      :now="now"
+      v-bind="now !== undefined ? { now } : {}"
       class="opacity-90"
     />
   </div>
