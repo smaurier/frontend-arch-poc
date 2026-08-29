@@ -7,5 +7,6 @@
     "lib": ["ES2022", "DOM"],
     "types": []
   },
-  "include": ["src/**/*", "src/**/*.vue"]
+  "include": ["src/**/*", "src/**/*.vue"],
+  "exclude": ["src/**/*.stories.ts", "src/**/*.test.ts", "dist"]
 }
