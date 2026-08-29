@@ -1,0 +1,7 @@
+[
+  {
+    "name": "shell app bundle",
+    "path": "apps/shell/dist/assets/*.js",
+    "limit": "150 KB"
+  }
+]
