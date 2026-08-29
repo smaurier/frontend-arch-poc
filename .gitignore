@@ -1,0 +1,33 @@
+# deps
+node_modules/
+.pnpm-store/
+
+# builds
+dist/
+storybook-static/
+.turbo/
+coverage/
+
+# playwright
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+
+# env
+.env
+.env.local
+.env.*.local
+
+# ide
+.vscode/settings.json
+.idea/
+
+# system
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# size-limit
+.size-limit-cache/
