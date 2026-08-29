@@ -31,3 +31,12 @@ Thumbs.db
 
 # size-limit
 .size-limit-cache/
+
+# tsc composite build artifacts (emitted by vue-tsc -b)
+*.tsbuildinfo
+apps/shell/src/**/*.js
+apps/shell/src/**/*.d.ts
+apps/shell/vite.config.js
+apps/shell/vite.config.d.ts
+apps/shell/vitest.config.js
+apps/shell/vitest.config.d.ts

@@ -1,0 +1,11 @@
+{
+  "extends": "@frontend-arch-poc/config/tsconfig",
+  "compilerOptions": {
+    "composite": true,
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "types": ["node"]
+  },
+  "include": ["vite.config.ts", "playwright.config.ts", ".storybook/**/*"]
+}
