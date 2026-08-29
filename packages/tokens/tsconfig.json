@@ -1,0 +1,9 @@
+{
+  "extends": "@frontend-arch-poc/config/tsconfig",
+  "compilerOptions": {
+    "moduleResolution": "Bundler",
+    "outDir": "dist",
+    "declaration": true
+  },
+  "include": ["src/**/*"]
+}
