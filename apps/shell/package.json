@@ -34,6 +34,11 @@
     "@playwright/test": "^1.49.1",
     "storybook": "^8.4.7",
     "@storybook/vue3": "^8.4.7",
-    "@storybook/vue3-vite": "^8.4.7"
+    "@storybook/vue3-vite": "^8.4.7",
+    "@storybook/addon-essentials": "8.6.18",
+    "@storybook/blocks": "8.6.18",
+    "@storybook/test": "8.6.18",
+    "@storybook/addon-onboarding": "8.6.18",
+    "@storybook/addon-interactions": "8.6.18"
   }
 }

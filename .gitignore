@@ -40,3 +40,5 @@ apps/shell/vite.config.js
 apps/shell/vite.config.d.ts
 apps/shell/vitest.config.js
 apps/shell/vitest.config.d.ts
+
+*storybook.log
