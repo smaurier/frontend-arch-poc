@@ -4,12 +4,9 @@ export default defineConfig({
   testDir: './e2e',
   timeout: 30_000,
   fullyParallel: false,
-  workers: process.env.CI ? 1 : undefined,
+  ...(process.env.CI && { workers: 1 }),
   retries: 0,
-  reporter: [
-    ['html', { outputFolder: 'playwright-report', open: 'never' }],
-    ['list'],
-  ],
+  reporter: [['html', { outputFolder: 'playwright-report', open: 'never' }], ['list']],
   use: {
     baseURL: 'http://localhost:4173',
     trace: 'on-first-retry',

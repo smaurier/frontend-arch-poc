@@ -40,5 +40,9 @@ apps/shell/vite.config.js
 apps/shell/vite.config.d.ts
 apps/shell/vitest.config.js
 apps/shell/vitest.config.d.ts
+apps/shell/playwright.config.js
+apps/shell/playwright.config.d.ts
+apps/shell/.storybook/**/*.js
+apps/shell/.storybook/**/*.d.ts
 
 *storybook.log

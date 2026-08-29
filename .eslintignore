@@ -1,0 +1,5 @@
+node_modules
+dist
+**/*.vue.js
+**/*.vue.d.ts
+.turbo

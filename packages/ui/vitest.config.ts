@@ -7,5 +7,6 @@ export default defineConfig({
     globals: true,
     environment: 'happy-dom',
     include: ['src/**/*.test.ts'],
+    passWithNoTests: true,
   },
 });
