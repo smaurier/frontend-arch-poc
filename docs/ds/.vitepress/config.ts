@@ -11,6 +11,7 @@ export default defineConfig({
       { text: 'Tokens', link: '/tokens' },
       { text: 'Components', link: '/components/' },
       { text: 'Theming', link: '/theming' },
+      { text: 'Demos', link: '/demos' },
       { text: 'Storybook', link: 'https://frontend-arch-poc-storybook.netlify.app' },
       { text: 'App demo', link: 'https://frontend-arch-poc-shell.netlify.app' },
     ],
@@ -22,6 +23,7 @@ export default defineConfig({
             { text: 'Install', link: '/getting-started' },
             { text: 'Design tokens', link: '/tokens' },
             { text: 'Theming', link: '/theming' },
+            { text: 'Demos', link: '/demos' },
           ],
         },
         {
