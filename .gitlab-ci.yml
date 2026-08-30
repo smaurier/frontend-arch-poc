@@ -1,0 +1,106 @@
+# Reference mirror of .github/workflows/ci.yml.
+# Not actively executed here (GitHub Actions is the primary CI) but kept
+# green as a portability guarantee. Copy this file to a GitLab project of
+# the same repo to run the same pipeline.
+
+image: node:22
+
+stages:
+  - install
+  - quality
+  - build
+  - integration
+  - security
+
+variables:
+  PNPM_HOME: '$CI_PROJECT_DIR/.pnpm-store'
+  npm_config_store_dir: '$CI_PROJECT_DIR/.pnpm-store'
+
+cache:
+  key:
+    files:
+      - pnpm-lock.yaml
+  paths:
+    - .pnpm-store
+    - node_modules
+
+before_script:
+  - corepack enable
+  - corepack prepare pnpm@10.28.2 --activate
+  - pnpm install --frozen-lockfile
+
+install:
+  stage: install
+  script:
+    - pnpm --version
+
+lint:
+  stage: quality
+  script:
+    - pnpm turbo run lint
+
+typecheck:
+  stage: quality
+  script:
+    - pnpm turbo run typecheck
+
+test:
+  stage: quality
+  script:
+    - pnpm turbo run test
+
+build:
+  stage: build
+  needs: [lint, typecheck, test]
+  script:
+    - pnpm turbo run build
+  artifacts:
+    paths:
+      - apps/shell/dist/
+      - apps/shell/storybook-static/
+    expire_in: 1 week
+
+e2e:
+  stage: integration
+  needs: [build]
+  script:
+    - pnpm --filter @frontend-arch-poc/shell exec playwright install --with-deps chromium
+    - pnpm turbo run build
+    - pnpm --filter @frontend-arch-poc/shell e2e
+  artifacts:
+    when: on_failure
+    paths:
+      - apps/shell/playwright-report/
+    expire_in: 1 week
+
+size-limit:
+  stage: integration
+  needs: [build]
+  script:
+    - pnpm turbo run build
+    - pnpm exec size-limit
+
+lighthouse:
+  stage: integration
+  needs: [build]
+  script:
+    - pnpm --filter @frontend-arch-poc/shell exec playwright install --with-deps chromium
+    - pnpm turbo run build
+    - pnpm lhci
+
+secrets-scan:
+  stage: security
+  script:
+    - echo "Run gitleaks or GitLab Secret Detection (built-in). This job intentionally left as documentation."
+
+deps-audit:
+  stage: security
+  allow_failure: true
+  script:
+    - pnpm audit --prod --audit-level high
+
+osv-scan:
+  stage: security
+  allow_failure: true
+  script:
+    - echo "Install osv-scanner (https://google.github.io/osv-scanner/) and run: osv-scanner --lockfile=pnpm-lock.yaml"
