@@ -31,7 +31,10 @@
   --color-text-primary: oklch(95% 0.005 260);
   --color-text-muted: oklch(70% 0.02 260);
   --color-border: oklch(35% 0.01 260);
-  /* status colors keep their meaning across themes */
+  /* status colors: same semantic intent, brightness raised for WCAG AA contrast on dark bg */
+  --color-status-ok: oklch(72% 0.15 145);
+  --color-status-warning: oklch(80% 0.15 85);
+  --color-status-critical: oklch(70% 0.18 25);
 }
 
 html, body {
