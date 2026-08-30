@@ -8,22 +8,54 @@ export interface Truck {
   status: TruckStatus;
   lastPing: number;
   permanentStale?: boolean;
+  lat: number;
+  lng: number;
 }
 
 const initialNow = Date.now();
 
 export const trucks = ref<Truck[]>([
-  { id: 'TRUCK-01', driver: 'A. Martin', status: 'driving', lastPing: initialNow },
-  { id: 'TRUCK-02', driver: 'B. Lopez', status: 'idle', lastPing: initialNow },
-  { id: 'TRUCK-03', driver: 'C. Chen', status: 'driving', lastPing: initialNow },
+  {
+    id: 'TRUCK-01',
+    driver: 'A. Martin',
+    status: 'driving',
+    lastPing: initialNow,
+    lat: 45.7578,
+    lng: 4.832,
+  },
+  {
+    id: 'TRUCK-02',
+    driver: 'B. Lopez',
+    status: 'idle',
+    lastPing: initialNow,
+    lat: 45.762,
+    lng: 4.845,
+  },
+  {
+    id: 'TRUCK-03',
+    driver: 'C. Chen',
+    status: 'driving',
+    lastPing: initialNow,
+    lat: 45.745,
+    lng: 4.825,
+  },
   {
     id: 'TRUCK-04',
     driver: "D. N'Guyen",
     status: 'stopped',
     lastPing: initialNow - 45_000,
     permanentStale: true,
+    lat: 45.77,
+    lng: 4.815,
   },
-  { id: 'TRUCK-05', driver: 'E. Rossi', status: 'driving', lastPing: initialNow },
+  {
+    id: 'TRUCK-05',
+    driver: 'E. Rossi',
+    status: 'driving',
+    lastPing: initialNow,
+    lat: 45.752,
+    lng: 4.85,
+  },
 ]);
 
 /**
