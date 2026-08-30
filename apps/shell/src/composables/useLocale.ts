@@ -15,6 +15,7 @@ export function useLocale() {
     } catch {
       /* localStorage unavailable */
     }
+    document.documentElement.setAttribute('lang', next);
   }
 
   return { currentLocale, setLocale, availableLocales };

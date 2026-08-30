@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, watchEffect } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { Layout, Button } from '@frontend-arch-poc/ui';
 import FleetTrackingView from './views/FleetTrackingView.vue';
@@ -9,6 +9,10 @@ import { useLocale } from './composables/useLocale';
 const { t } = useI18n();
 const { theme, toggle } = useTheme();
 const { currentLocale, setLocale, availableLocales } = useLocale();
+
+watchEffect(() => {
+  document.documentElement.setAttribute('lang', currentLocale.value);
+});
 
 const themeToggleLabel = computed(() =>
   t('app.themeToggle', {
