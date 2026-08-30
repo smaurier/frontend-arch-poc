@@ -1,0 +1,34 @@
+{
+  "app": {
+    "title": "Suivi de flotte",
+    "themeToggle": "Passer en theme {mode}",
+    "themeDark": "sombre",
+    "themeLight": "clair",
+    "localeSwitcher": "Langue"
+  },
+  "nav": {
+    "fleet": "Flotte",
+    "trips": "Trajets",
+    "alerts": "Alertes"
+  },
+  "fleet": {
+    "sectionTitle": "Flotte {count} vehicules",
+    "columns": {
+      "id": "ID",
+      "driver": "Chauffeur",
+      "status": "Statut",
+      "lastPing": "Dernier ping",
+      "alarm": "Alarme"
+    }
+  },
+  "truck": {
+    "status": {
+      "driving": "En route",
+      "idle": "Au ralenti",
+      "stopped": "Arrete"
+    }
+  },
+  "alarm": {
+    "pingLost": "ping perdu"
+  }
+}

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, h } from 'vue';
+import { useI18n } from 'vue-i18n';
 import {
   Badge,
   FreshnessTimestamp,
@@ -11,15 +12,16 @@ import type { MapMarker, DataTableColumn } from '@frontend-arch-poc/ui';
 import { useFreshnessTicker } from '@frontend-arch-poc/composables';
 import { trucks, type TruckStatus } from '../mocks/trucks-data';
 
+const { t } = useI18n();
 const { now } = useFreshnessTicker(1000);
 
-const statusLabels: Record<
+const statusInfo: Record<
   TruckStatus,
-  { label: string; badgeStatus: 'ok' | 'warning' | 'critical' | 'neutral' }
+  { badgeStatus: 'ok' | 'warning' | 'critical' | 'neutral'; labelKey: string }
 > = {
-  driving: { label: 'Driving', badgeStatus: 'ok' },
-  idle: { label: 'Idle', badgeStatus: 'warning' },
-  stopped: { label: 'Stopped', badgeStatus: 'critical' },
+  driving: { badgeStatus: 'ok', labelKey: 'truck.status.driving' },
+  idle: { badgeStatus: 'warning', labelKey: 'truck.status.idle' },
+  stopped: { badgeStatus: 'critical', labelKey: 'truck.status.stopped' },
 };
 
 function isPingLost(lastPing: number): boolean {
@@ -27,39 +29,37 @@ function isPingLost(lastPing: number): boolean {
 }
 
 const mapMarkers = computed<MapMarker[]>(() =>
-  trucks.value.map((t) => ({
-    id: t.id,
-    lat: t.lat,
-    lng: t.lng,
-    label: t.driver,
-    status: isPingLost(t.lastPing)
+  trucks.value.map((row) => ({
+    id: row.id,
+    lat: row.lat,
+    lng: row.lng,
+    label: row.driver,
+    status: isPingLost(row.lastPing)
       ? 'critical'
-      : statusLabels[t.status].badgeStatus === 'critical'
+      : statusInfo[row.status].badgeStatus === 'critical'
         ? 'critical'
-        : statusLabels[t.status].badgeStatus === 'warning'
+        : statusInfo[row.status].badgeStatus === 'warning'
           ? 'warning'
           : 'ok',
   })),
 );
 
-type Truck = (typeof trucks.value)[number];
-
-const columns: DataTableColumn<Truck>[] = [
-  { key: 'id', header: 'ID', width: '100px' },
-  { key: 'driver', header: 'Driver', width: '140px' },
+const columns = computed<DataTableColumn<(typeof trucks.value)[number]>[]>(() => [
+  { key: 'id', header: t('fleet.columns.id'), width: '100px' },
+  { key: 'driver', header: t('fleet.columns.driver'), width: '140px' },
   {
     key: 'status',
-    header: 'Status',
+    header: t('fleet.columns.status'),
     width: '100px',
     render: (row) =>
       h(Badge, {
-        status: statusLabels[row.status].badgeStatus,
-        label: statusLabels[row.status].label,
+        status: statusInfo[row.status].badgeStatus,
+        label: t(statusInfo[row.status].labelKey),
       }),
   },
   {
     key: 'lastPing',
-    header: 'Last ping',
+    header: t('fleet.columns.lastPing'),
     width: '100px',
     render: (row) =>
       h(FreshnessTimestamp, {
@@ -69,31 +69,31 @@ const columns: DataTableColumn<Truck>[] = [
   },
   {
     key: 'alarm',
-    header: 'Alarm',
+    header: t('fleet.columns.alarm'),
     render: (row) =>
       isPingLost(row.lastPing)
         ? h(AlarmIndicator, {
             severity: 'critical',
-            label: 'ping lost',
+            label: t('alarm.pingLost'),
             since: row.lastPing,
             now: now.value,
           })
         : null,
   },
-];
+]);
 </script>
 
 <template>
   <div class="grid grid-cols-1 lg:grid-cols-[1fr_500px] gap-lg">
     <section>
       <h2 class="text-lg font-bold mb-md">
-        Fleet {{ trucks.length }} vehicles
+        {{ t('fleet.sectionTitle', { count: trucks.length }) }}
       </h2>
       <DataTable
         :rows="trucks"
         :columns="columns"
         :row-key="(t) => t.id"
-        aria-label="Fleet vehicles table"
+        :aria-label="t('fleet.sectionTitle', { count: trucks.length })"
       />
     </section>
 

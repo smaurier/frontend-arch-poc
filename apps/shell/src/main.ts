@@ -1,9 +1,9 @@
 import { createApp } from 'vue';
 import App from './App.vue';
+import { i18n } from './i18n';
 import { startMockUpdates } from './mocks/trucks-data';
 import './style.css';
 
-createApp(App).mount('#app');
+createApp(App).use(i18n).mount('#app');
 
-// Start realtime mock ONLY after mount, not at import time.
 startMockUpdates(2000);

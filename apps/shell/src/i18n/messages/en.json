@@ -1,0 +1,34 @@
+{
+  "app": {
+    "title": "Fleet Tracker",
+    "themeToggle": "Switch to {mode} theme",
+    "themeDark": "dark",
+    "themeLight": "light",
+    "localeSwitcher": "Language"
+  },
+  "nav": {
+    "fleet": "Fleet",
+    "trips": "Trips",
+    "alerts": "Alerts"
+  },
+  "fleet": {
+    "sectionTitle": "Fleet {count} vehicles",
+    "columns": {
+      "id": "ID",
+      "driver": "Driver",
+      "status": "Status",
+      "lastPing": "Last ping",
+      "alarm": "Alarm"
+    }
+  },
+  "truck": {
+    "status": {
+      "driving": "Driving",
+      "idle": "Idle",
+      "stopped": "Stopped"
+    }
+  },
+  "alarm": {
+    "pingLost": "ping lost"
+  }
+}

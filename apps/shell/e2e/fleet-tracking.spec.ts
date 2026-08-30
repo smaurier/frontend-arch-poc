@@ -16,4 +16,14 @@ test.describe('FleetTracking', () => {
     const after = await html.getAttribute('data-theme');
     expect(after).not.toBe(initial);
   });
+
+  test('locale switch changes displayed text', async ({ page }) => {
+    await page.goto('/');
+    // In default en, section title contains "Fleet"
+    await expect(page.getByText(/Fleet\s+5\s+vehicles/i)).toBeVisible();
+    // Switch to fr
+    await page.locator('[data-testid="locale-switcher"]').selectOption('fr');
+    // In fr, section title contains "Flotte"
+    await expect(page.getByText(/Flotte\s+5\s+v.hicules/i)).toBeVisible();
+  });
 });
