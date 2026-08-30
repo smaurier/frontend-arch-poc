@@ -38,6 +38,7 @@
     "storybook": "^8.4.7",
     "@storybook/vue3": "^8.4.7",
     "@storybook/vue3-vite": "^8.4.7",
+    "@storybook/addon-a11y": "8.6.18",
     "@storybook/addon-essentials": "8.6.18",
     "@storybook/blocks": "8.6.18",
     "@storybook/test": "8.6.18",

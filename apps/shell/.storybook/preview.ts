@@ -3,6 +3,14 @@ import '../src/style.css';
 
 const preview: Preview = {
   parameters: {
+    a11y: {
+      config: {
+        rules: [
+          // axe defaults apply; override per-story as needed
+        ],
+      },
+      options: {},
+    },
     controls: {
       matchers: {
         color: /(background|color)$/i,
