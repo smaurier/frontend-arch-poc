@@ -8,6 +8,9 @@ import CallbackView from './views/CallbackView.vue';
 import { useTheme } from './composables/useTheme';
 import { useLocale } from './composables/useLocale';
 import { useAuth } from './auth/useAuth';
+import { useSSE } from '@frontend-arch-poc/composables';
+import { trucksSourceConfig, applyTrucksSnapshot, applyTrucksEvent } from './data/trucks-source';
+import type { Truck } from './mocks/trucks-data';
 
 const { t } = useI18n();
 const { theme, toggle } = useTheme();
@@ -15,6 +18,16 @@ const { currentLocale, setLocale, availableLocales } = useLocale();
 
 const authEnabled = import.meta.env.VITE_AUTH_ENABLED === 'true';
 const auth = useAuth();
+
+if (trucksSourceConfig.sseEnabled) {
+  useSSE<Truck[]>({
+    url: trucksSourceConfig.sseUrl,
+    snapshotUrl: trucksSourceConfig.snapshotUrl,
+    eventName: 'trucks',
+    onSnapshot: applyTrucksSnapshot,
+    onEvent: applyTrucksEvent,
+  });
+}
 
 const isCallback = computed(() => window.location.pathname === '/callback');
 

@@ -1,7 +1,7 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 import { i18n } from './i18n';
-import { startMockUpdates } from './mocks/trucks-data';
+import { startTrucksSource } from './data/trucks-source';
 import { initSentry } from './observability/sentry';
 import { initObservability } from './observability/useObservability';
 import { logger } from './observability/logger';
@@ -19,4 +19,4 @@ if (sentryOn) {
   logger.info('sentry initialized');
 }
 
-startMockUpdates(2000);
+startTrucksSource(2000);

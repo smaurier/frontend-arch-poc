@@ -12,6 +12,9 @@ interface ImportMetaEnv {
   readonly VITE_OIDC_CLIENT_ID?: string;
   readonly VITE_SENTRY_DSN?: string;
   readonly VITE_APP_VERSION?: string;
+  readonly VITE_SSE_ENABLED?: string;
+  readonly VITE_SSE_URL?: string;
+  readonly VITE_SNAPSHOT_URL?: string;
 }
 
 interface ImportMeta {
