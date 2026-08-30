@@ -11,24 +11,39 @@ export default meta;
 
 type Story = StoryObj<typeof Layout>;
 
-export const Default: Story = {
+const templateBody = `
+  <Layout>
+    <template #header>
+      <h1 class="text-lg font-bold">Fleet Tracker</h1>
+      <div>[theme toggle]</div>
+    </template>
+    <template #nav>
+      <ul class="space-y-sm">
+        <li>Fleet</li>
+        <li>Trips</li>
+        <li>Alerts</li>
+      </ul>
+    </template>
+    <p>Main content goes here.</p>
+  </Layout>
+`;
+
+export const Desktop: Story = {
+  parameters: {
+    viewport: { defaultViewport: 'desktop' },
+  },
   render: () => ({
     components: { Layout },
-    template: `
-      <Layout>
-        <template #header>
-          <h1 class="text-lg font-bold">Fleet Tracker</h1>
-          <div>[theme toggle]</div>
-        </template>
-        <template #nav>
-          <ul class="space-y-sm">
-            <li>▸ Fleet</li>
-            <li>▸ Trips</li>
-            <li>▸ Alerts</li>
-          </ul>
-        </template>
-        <p>Main content goes here.</p>
-      </Layout>
-    `,
+    template: templateBody,
+  }),
+};
+
+export const Mobile: Story = {
+  parameters: {
+    viewport: { defaultViewport: 'mobile1' },
+  },
+  render: () => ({
+    components: { Layout },
+    template: templateBody,
   }),
 };
