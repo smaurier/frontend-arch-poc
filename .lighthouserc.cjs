@@ -36,6 +36,9 @@ module.exports = {
         'robots-txt': 'off',
         // unused-javascript: demo shell has some tree-shaking gaps, tracked as warn not error
         'unused-javascript': 'warn',
+        // Leaflet map tiles are fixed-size images by design (OSM tile spec)
+        'image-size-responsive': 'off',
+        'modern-image-formats': 'warn',
       },
     },
     upload: {
