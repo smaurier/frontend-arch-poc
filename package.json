@@ -11,6 +11,9 @@
     "build": "turbo run build",
     "build-storybook": "turbo run build-storybook --filter=@frontend-arch-poc/shell",
     "dev": "turbo run dev --filter=@frontend-arch-poc/shell",
+    "docs:build": "vitepress build docs/ds",
+    "docs:dev": "vitepress dev docs/ds",
+    "docs:preview": "vitepress preview docs/ds",
     "e2e": "turbo run e2e --filter=@frontend-arch-poc/shell",
     "lhci": "lhci autorun --config=.lighthouserc.cjs",
     "lint": "turbo run lint",
@@ -41,6 +44,7 @@
     "prettier": "^3.4.2",
     "size-limit": "^11.1.6",
     "turbo": "^2.3.3",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "vitepress": "^1.5.0"
   }
 }

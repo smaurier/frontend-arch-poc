@@ -49,3 +49,7 @@ apps/shell/.storybook/**/*.js
 apps/shell/.storybook/**/*.d.ts
 
 *storybook.log
+
+# vitepress
+docs/ds/.vitepress/dist/
+docs/ds/.vitepress/cache/
