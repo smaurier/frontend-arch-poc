@@ -29,7 +29,7 @@ vi.mock('leaflet', () => {
 describe('FleetTrackingView', () => {
   it('renders one row per truck', () => {
     const wrapper = mount(FleetTrackingView);
-    const rows = wrapper.findAll('[data-testid="truck-row"]');
+    const rows = wrapper.findAll('[data-testid="datatable-row"]');
     expect(rows.length).toBe(5);
   });
 

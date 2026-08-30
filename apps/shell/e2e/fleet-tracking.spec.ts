@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 test.describe('FleetTracking', () => {
   test('renders 5 trucks and at least one alarm', async ({ page }) => {
     await page.goto('/');
-    const rows = page.locator('[data-testid="truck-row"]');
+    const rows = page.locator('[data-testid="datatable-row"]');
     await expect(rows).toHaveCount(5);
     await expect(page.locator('[role="alert"]').first()).toBeVisible();
   });

@@ -1,7 +1,13 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { Badge, FreshnessTimestamp, AlarmIndicator, MapView } from '@frontend-arch-poc/ui';
-import type { MapMarker } from '@frontend-arch-poc/ui';
+import { computed, h } from 'vue';
+import {
+  Badge,
+  FreshnessTimestamp,
+  AlarmIndicator,
+  MapView,
+  DataTable,
+} from '@frontend-arch-poc/ui';
+import type { MapMarker, DataTableColumn } from '@frontend-arch-poc/ui';
 import { useFreshnessTicker } from '@frontend-arch-poc/composables';
 import { trucks, type TruckStatus } from '../mocks/trucks-data';
 
@@ -35,6 +41,46 @@ const mapMarkers = computed<MapMarker[]>(() =>
           : 'ok',
   })),
 );
+
+type Truck = (typeof trucks.value)[number];
+
+const columns: DataTableColumn<Truck>[] = [
+  { key: 'id', header: 'ID', width: '100px' },
+  { key: 'driver', header: 'Driver', width: '140px' },
+  {
+    key: 'status',
+    header: 'Status',
+    width: '100px',
+    render: (row) =>
+      h(Badge, {
+        status: statusLabels[row.status].badgeStatus,
+        label: statusLabels[row.status].label,
+      }),
+  },
+  {
+    key: 'lastPing',
+    header: 'Last ping',
+    width: '100px',
+    render: (row) =>
+      h(FreshnessTimestamp, {
+        timestamp: row.lastPing,
+        now: now.value,
+      }),
+  },
+  {
+    key: 'alarm',
+    header: 'Alarm',
+    render: (row) =>
+      isPingLost(row.lastPing)
+        ? h(AlarmIndicator, {
+            severity: 'critical',
+            label: 'ping lost',
+            since: row.lastPing,
+            now: now.value,
+          })
+        : null,
+  },
+];
 </script>
 
 <template>
@@ -43,32 +89,12 @@ const mapMarkers = computed<MapMarker[]>(() =>
       <h2 class="text-lg font-bold mb-md">
         Fleet {{ trucks.length }} vehicles
       </h2>
-      <ul class="space-y-sm">
-        <li
-          v-for="truck in trucks"
-          :key="truck.id"
-          data-testid="truck-row"
-          class="grid grid-cols-[100px_140px_100px_100px_1fr] items-center gap-md p-sm bg-bg-surface rounded-md"
-        >
-          <span class="font-mono">{{ truck.id }}</span>
-          <span class="text-text-muted">{{ truck.driver }}</span>
-          <Badge
-            :status="statusLabels[truck.status].badgeStatus"
-            :label="statusLabels[truck.status].label"
-          />
-          <FreshnessTimestamp
-            :timestamp="truck.lastPing"
-            :now="now"
-          />
-          <AlarmIndicator
-            v-if="isPingLost(truck.lastPing)"
-            severity="critical"
-            label="ping lost"
-            :since="truck.lastPing"
-            :now="now"
-          />
-        </li>
-      </ul>
+      <DataTable
+        :rows="trucks"
+        :columns="columns"
+        :row-key="(t) => t.id"
+        aria-label="Fleet vehicles table"
+      />
     </section>
 
     <aside class="min-h-[500px]">
