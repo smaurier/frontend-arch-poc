@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security vulnerability
+    url: https://github.com/smaurier/frontend-arch-poc/security/policy
+    about: Please follow the security policy. Do not open a public issue.
+  - name: Design system docs
+    url: https://frontend-arch-poc-ds.netlify.app
+    about: API, tokens, components reference.

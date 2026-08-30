@@ -42,3 +42,9 @@ Deferred to V3 (when a team exists):
 
 - Conventional Commits: https://www.conventionalcommits.org/
 - CONTRIBUTING.md, CLAUDE.md.
+
+## 2026-08-30 addendum
+
+Team-scale sections deferred in this ADR are now covered by ADR-0016 (deep standards): SLA on reviews (24 business hours first response), onboarding checklist (`docs/onboarding.md`), full Code of Conduct (Contributor Covenant 2.1), branch strategy, PR + issue templates.
+
+This ADR remains accepted for the v0 principles it captured (Conventional Commits, Husky pre-commit, `CONTRIBUTING.md` minimal). It is not superseded, only augmented.
