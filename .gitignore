@@ -32,6 +32,9 @@ Thumbs.db
 # size-limit
 .size-limit-cache/
 
+# lighthouse ci
+.lighthouseci/
+
 # tsc composite build artifacts (emitted by vue-tsc -b)
 *.tsbuildinfo
 apps/shell/src/**/*.js

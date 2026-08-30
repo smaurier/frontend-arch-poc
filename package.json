@@ -9,15 +9,16 @@
   },
   "scripts": {
     "build": "turbo run build",
-    "test": "turbo run test",
-    "lint": "turbo run lint",
-    "typecheck": "turbo run typecheck",
-    "dev": "turbo run dev --filter=@frontend-arch-poc/shell",
-    "storybook": "turbo run storybook --filter=@frontend-arch-poc/shell",
     "build-storybook": "turbo run build-storybook --filter=@frontend-arch-poc/shell",
+    "dev": "turbo run dev --filter=@frontend-arch-poc/shell",
     "e2e": "turbo run e2e --filter=@frontend-arch-poc/shell",
+    "lhci": "lhci autorun --config=.lighthouserc.cjs",
+    "lint": "turbo run lint",
+    "prepare": "husky",
     "size-limit": "size-limit",
-    "prepare": "husky"
+    "storybook": "turbo run storybook --filter=@frontend-arch-poc/shell",
+    "test": "turbo run test",
+    "typecheck": "turbo run typecheck"
   },
   "lint-staged": {
     "*.{js,ts,vue}": [
@@ -32,6 +33,7 @@
     "@commitlint/cli": "^19.6.0",
     "@commitlint/config-conventional": "^19.6.0",
     "@frontend-arch-poc/config": "workspace:*",
+    "@lhci/cli": "^0.14.0",
     "@size-limit/preset-app": "^11.1.6",
     "happy-dom": "^15.11.7",
     "husky": "^9.1.7",
