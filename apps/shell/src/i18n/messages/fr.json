@@ -1,7 +1,7 @@
 {
   "app": {
     "title": "Suivi de flotte",
-    "themeToggle": "Passer en theme {mode}",
+    "themeToggle": "Passer en thème {mode}",
     "themeDark": "sombre",
     "themeLight": "clair",
     "localeSwitcher": "Langue"
@@ -12,7 +12,7 @@
     "alerts": "Alertes"
   },
   "fleet": {
-    "sectionTitle": "Flotte {count} vehicules",
+    "sectionTitle": "Flotte {count} véhicules",
     "columns": {
       "id": "ID",
       "driver": "Chauffeur",
@@ -25,7 +25,7 @@
     "status": {
       "driving": "En route",
       "idle": "Au ralenti",
-      "stopped": "Arrete"
+      "stopped": "Arrêté"
     }
   },
   "alarm": {
