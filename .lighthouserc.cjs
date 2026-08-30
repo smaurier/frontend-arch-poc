@@ -12,9 +12,9 @@ module.exports = {
       preset: 'lighthouse:recommended',
       assertions: {
         // Google defaults for Core Web Vitals (mobile-first defaults from LHCI)
+        // Budget targets: LCP < 2500ms, CLS < 0.1, TBT < 200ms (INP not in LHCI 0.14 audits)
         'largest-contentful-paint': ['error', { maxNumericValue: 2500 }],
         'cumulative-layout-shift': ['error', { maxNumericValue: 0.1 }],
-        'interaction-to-next-paint': ['error', { maxNumericValue: 200 }],
         'total-blocking-time': ['warn', { maxNumericValue: 200 }],
         // Overall category thresholds
         'categories:performance': ['warn', { minScore: 0.9 }],
@@ -25,7 +25,7 @@ module.exports = {
         'is-on-https': 'off',
         'redirects-http': 'off',
         'uses-http2': 'off',
-        // INP not tracked by LHCI 0.14 audits (auditRan=0) — kept as budget doc, assertion off
+        // INP not tracked by LHCI 0.14 audits (auditRan=0) - budget target documented, assertion off
         'interaction-to-next-paint': 'off',
         // NaN audits: not applicable to a static shell without LCP image or animations
         'lcp-lazy-loaded': 'off',
