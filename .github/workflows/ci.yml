@@ -67,7 +67,7 @@ jobs:
           node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm --filter @frontend-arch-poc/shell exec playwright install --with-deps chromium
       - run: pnpm turbo run build
       - run: pnpm --filter @frontend-arch-poc/shell e2e
       - if: failure()
