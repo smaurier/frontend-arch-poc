@@ -1,0 +1,54 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: '06:00'
+      timezone: Europe/Paris
+    open-pull-requests-limit: 10
+    labels:
+      - dependencies
+    groups:
+      minor-and-patch:
+        update-types:
+          - minor
+          - patch
+      vue-ecosystem:
+        patterns:
+          - vue
+          - '@vue/*'
+          - '@vitejs/plugin-vue'
+          - vue-tsc
+          - vue-i18n
+      test-tools:
+        patterns:
+          - vitest
+          - '@vitest/*'
+          - '@vue/test-utils'
+          - happy-dom
+          - '@playwright/test'
+          - '@axe-core/playwright'
+      storybook:
+        patterns:
+          - storybook
+          - '@storybook/*'
+      lint-format:
+        patterns:
+          - eslint
+          - eslint-*
+          - '@vue/eslint-config-*'
+          - prettier
+          - husky
+          - lint-staged
+          - '@commitlint/*'
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    labels:
+      - dependencies
+      - github-actions
