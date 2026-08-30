@@ -10,6 +10,8 @@ interface ImportMetaEnv {
   readonly VITE_AUTH_ENABLED?: string;
   readonly VITE_OIDC_AUTHORITY?: string;
   readonly VITE_OIDC_CLIENT_ID?: string;
+  readonly VITE_SENTRY_DSN?: string;
+  readonly VITE_APP_VERSION?: string;
 }
 
 interface ImportMeta {
