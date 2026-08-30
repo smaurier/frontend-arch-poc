@@ -1,3 +1,12 @@
 [build.environment]
   NODE_VERSION = "22"
   PNPM_VERSION = "10"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.tile.openstreetmap.org; connect-src 'self' http://localhost:8085 https://*.sentry.io https://*.ingest.sentry.io; font-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' http://localhost:8085; object-src 'none'"
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
