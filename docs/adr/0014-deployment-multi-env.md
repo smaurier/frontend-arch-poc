@@ -36,3 +36,9 @@ The app deploys to Netlify. V3b formalizes the multi-environment story: preview 
 - Netlify Deploy Previews: https://docs.netlify.com/site-deploys/deploy-previews/
 - Netlify contexts: https://docs.netlify.com/build/configure-builds/file-based-configuration/#deploy-contexts
 - Related: ADR-0005 (CI/CD), ADR-0012 (security).
+
+## 2026-08-30 addendum · branching strategy patterns
+
+Documented four industry patterns (GitHub Flow, Trunk-based, GitLab Flow, Git Flow) with fit criteria, plus concrete setup instructions to switch from GitHub Flow (current) to GitLab Flow (staging + prod) if triggers fire. Details in `docs/methodology/deployment-and-rollback.md` sections "Branching strategy comparison" and "Switching to GitLab Flow".
+
+Rationale for the current choice restated: at present team size, Deploy Previews match every guarantee a permanent staging site would provide, at zero maintenance cost. Do not switch on aesthetics.
