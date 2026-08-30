@@ -1,5 +1,5 @@
 {
-  "name": "@frontend-arch-poc/ui",
+  "name": "@frontend-arch-poc/composables",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -15,8 +15,6 @@
     "lint": "eslint . --max-warnings=0"
   },
   "dependencies": {
-    "@frontend-arch-poc/composables": "workspace:*",
-    "@frontend-arch-poc/tokens": "workspace:*",
     "vue": "^3.5.13"
   },
   "devDependencies": {

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Badge, FreshnessTimestamp, AlarmIndicator } from '@frontend-arch-poc/ui';
-import { useFreshnessTicker } from '../composables/useFreshnessTicker';
+import { useFreshnessTicker } from '@frontend-arch-poc/composables';
 import { trucks, type TruckStatus } from '../mocks/trucks-data';
 
 const { now } = useFreshnessTicker(1000);

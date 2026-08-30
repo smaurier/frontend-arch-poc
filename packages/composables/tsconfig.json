@@ -1,0 +1,12 @@
+{
+  "extends": "@frontend-arch-poc/config/tsconfig",
+  "compilerOptions": {
+    "moduleResolution": "Bundler",
+    "outDir": "dist",
+    "declaration": true,
+    "lib": ["ES2022", "DOM"],
+    "types": []
+  },
+  "include": ["src/**/*"],
+  "exclude": ["src/**/*.test.ts", "dist"]
+}
