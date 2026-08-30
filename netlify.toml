@@ -2,6 +2,20 @@
   NODE_VERSION = "22"
   PNPM_VERSION = "10"
 
+# Production context: what main branch deploys.
+[context.production.environment]
+  VITE_APP_VERSION = "prod"
+  # Feature flags stay off unless explicitly enabled in the Netlify UI.
+
+# Deploy preview context: what every PR builds.
+[context.deploy-preview.environment]
+  VITE_APP_VERSION = "preview"
+
+# Branch-deploy fallback context: any non-main branch pushed to a linked
+# Netlify site (rare v0; kept for portability).
+[context.branch-deploy.environment]
+  VITE_APP_VERSION = "branch"
+
 [[headers]]
   for = "/*"
   [headers.values]
