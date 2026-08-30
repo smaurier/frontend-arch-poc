@@ -6,6 +6,12 @@
     "themeLight": "light",
     "localeSwitcher": "Language"
   },
+  "auth": {
+    "pleaseSignIn": "Please sign in to continue.",
+    "signInWithOidc": "Sign in",
+    "signingIn": "Signing in...",
+    "signOut": "Sign out"
+  },
   "nav": {
     "fleet": "Fleet",
     "trips": "Trips",

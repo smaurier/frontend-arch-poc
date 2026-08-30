@@ -3,12 +3,20 @@ import { computed, watchEffect } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { Layout, Button } from '@frontend-arch-poc/ui';
 import FleetTrackingView from './views/FleetTrackingView.vue';
+import LoginView from './views/LoginView.vue';
+import CallbackView from './views/CallbackView.vue';
 import { useTheme } from './composables/useTheme';
 import { useLocale } from './composables/useLocale';
+import { useAuth } from './auth/useAuth';
 
 const { t } = useI18n();
 const { theme, toggle } = useTheme();
 const { currentLocale, setLocale, availableLocales } = useLocale();
+
+const authEnabled = import.meta.env.VITE_AUTH_ENABLED === 'true';
+const auth = useAuth();
+
+const isCallback = computed(() => window.location.pathname === '/callback');
 
 watchEffect(() => {
   document.documentElement.setAttribute('lang', currentLocale.value);
@@ -22,7 +30,9 @@ const themeToggleLabel = computed(() =>
 </script>
 
 <template>
-  <Layout>
+  <CallbackView v-if="authEnabled && isCallback" />
+  <LoginView v-else-if="authEnabled && !auth.isAuthenticated.value" />
+  <Layout v-else>
     <template #header>
       <h1 class="text-lg font-bold">
         {{ t('app.title') }}
@@ -52,6 +62,15 @@ const themeToggleLabel = computed(() =>
           @click="toggle"
         >
           {{ theme === 'light' ? '🌙' : '☀️' }}
+        </Button>
+        <Button
+          v-if="authEnabled && auth.isAuthenticated.value"
+          variant="secondary"
+          :aria-label="t('auth.signOut')"
+          data-testid="signout-button"
+          @click="auth.signOut"
+        >
+          {{ t('auth.signOut') }}
         </Button>
       </div>
     </template>

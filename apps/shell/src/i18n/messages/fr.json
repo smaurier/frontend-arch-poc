@@ -6,6 +6,12 @@
     "themeLight": "clair",
     "localeSwitcher": "Langue"
   },
+  "auth": {
+    "pleaseSignIn": "Veuillez vous connecter pour continuer.",
+    "signInWithOidc": "Se connecter",
+    "signingIn": "Connexion en cours...",
+    "signOut": "Se déconnecter"
+  },
   "nav": {
     "fleet": "Flotte",
     "trips": "Trajets",

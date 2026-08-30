@@ -45,7 +45,7 @@ importers:
         version: 5.9.3
       vitepress:
         specifier: ^1.5.0
-        version: 1.6.4(@algolia/client-search@5.57.0)(@types/node@26.4.0)(lightningcss@1.32.0)(postcss@8.5.26)(search-insights@2.17.3)(typescript@5.9.3)
+        version: 1.6.4(@algolia/client-search@5.57.0)(@types/node@26.4.0)(jwt-decode@4.0.0)(lightningcss@1.32.0)(postcss@8.5.26)(search-insights@2.17.3)(typescript@5.9.3)
 
   apps/shell:
     dependencies:
@@ -58,6 +58,9 @@ importers:
       '@frontend-arch-poc/ui':
         specifier: workspace:*
         version: link:../../packages/ui
+      oidc-client-ts:
+        specifier: ^3.1.0
+        version: 3.5.0
       vue:
         specifier: ^3.5.13
         version: 3.5.42(typescript@5.9.3)
@@ -4840,6 +4843,13 @@ packages:
         integrity: sha512-C9YK3Rf8q6VAPDCCU9fnqo3mAfOH6vUGnMcP4AQAYIEpWtfGLpwOTmZ+igtdK5y+VvI2n3CyYSzy4Qh34eq24A==,
       }
 
+  jwt-decode@4.0.0:
+    resolution:
+      {
+        integrity: sha512-+KJGIyHgkGuIq3IEBNftfhW/LfWhXUIY6OmyVWjliu5KH1y0fw7VQ8YndE2O4qZdMSd9SqbnC8GOcZEy0Om7sA==,
+      }
+    engines: { node: '>=18' }
+
   keyv@4.5.4:
     resolution:
       {
@@ -5518,6 +5528,13 @@ packages:
         integrity: sha512-W67iLl4J2EXEGTbfeHCffrjDfitvLANg0UlX3wFUUSTx92KXRFegMHUVgSqE+wvhAbi4WqjGg9czysTV2Epbew==,
       }
     engines: { node: '>= 0.4' }
+
+  oidc-client-ts@3.5.0:
+    resolution:
+      {
+        integrity: sha512-l2q8l9CTCTOlbX+AnK4p3M+4CEpKpyQhle6blQkdFhm0IsBqsxm15bYaSa11G7pWdsYr6epdsRZxJpCyCRbT8A==,
+      }
+    engines: { node: '>=18' }
 
   on-finished@2.4.1:
     resolution:
@@ -9078,13 +9095,14 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  '@vueuse/integrations@12.8.2(focus-trap@7.8.0)(typescript@5.9.3)':
+  '@vueuse/integrations@12.8.2(focus-trap@7.8.0)(jwt-decode@4.0.0)(typescript@5.9.3)':
     dependencies:
       '@vueuse/core': 12.8.2(typescript@5.9.3)
       '@vueuse/shared': 12.8.2(typescript@5.9.3)
       vue: 3.5.42(typescript@5.9.3)
     optionalDependencies:
       focus-trap: 7.8.0
+      jwt-decode: 4.0.0
     transitivePeerDependencies:
       - typescript
 
@@ -10448,6 +10466,8 @@ snapshots:
       is-promise: 2.2.2
       promise: 7.3.1
 
+  jwt-decode@4.0.0: {}
+
   keyv@4.5.4:
     dependencies:
       json-buffer: 3.0.1
@@ -10797,6 +10817,10 @@ snapshots:
   object-assign@4.1.1: {}
 
   object-inspect@1.13.4: {}
+
+  oidc-client-ts@3.5.0:
+    dependencies:
+      jwt-decode: 4.0.0
 
   on-finished@2.4.1:
     dependencies:
@@ -11816,7 +11840,7 @@ snapshots:
       lightningcss: 1.32.0
       yaml: 2.9.0
 
-  vitepress@1.6.4(@algolia/client-search@5.57.0)(@types/node@26.4.0)(lightningcss@1.32.0)(postcss@8.5.26)(search-insights@2.17.3)(typescript@5.9.3):
+  vitepress@1.6.4(@algolia/client-search@5.57.0)(@types/node@26.4.0)(jwt-decode@4.0.0)(lightningcss@1.32.0)(postcss@8.5.26)(search-insights@2.17.3)(typescript@5.9.3):
     dependencies:
       '@docsearch/css': 3.8.2
       '@docsearch/js': 3.8.2(@algolia/client-search@5.57.0)(search-insights@2.17.3)
@@ -11829,7 +11853,7 @@ snapshots:
       '@vue/devtools-api': 7.7.10
       '@vue/shared': 3.5.42
       '@vueuse/core': 12.8.2(typescript@5.9.3)
-      '@vueuse/integrations': 12.8.2(focus-trap@7.8.0)(typescript@5.9.3)
+      '@vueuse/integrations': 12.8.2(focus-trap@7.8.0)(jwt-decode@4.0.0)(typescript@5.9.3)
       focus-trap: 7.8.0
       mark.js: 8.11.1
       minisearch: 7.2.0
