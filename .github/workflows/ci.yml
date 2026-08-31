@@ -133,7 +133,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: google/osv-scanner-action/actions/scanner@v2
+      - uses: google/osv-scanner-action/osv-scanner-action@v2.5.1
         continue-on-error: true
         with:
           scan-args: |-
