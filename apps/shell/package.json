@@ -37,7 +37,7 @@
     "vitest": "^2.1.8",
     "vue-tsc": "^2.1.10",
     "@axe-core/playwright": "^4.10.0",
-    "@playwright/test": "^1.49.1",
+    "@playwright/test": "^1.63.0",
     "@types/node": "^22.10.5",
     "storybook": "^8.4.7",
     "@storybook/vue3": "^8.4.7",

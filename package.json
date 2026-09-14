@@ -36,7 +36,7 @@
     "@commitlint/cli": "^19.6.0",
     "@commitlint/config-conventional": "^19.6.0",
     "@frontend-arch-poc/config": "workspace:*",
-    "@lhci/cli": "^0.14.0",
+    "@lhci/cli": "^0.15.1",
     "@size-limit/preset-app": "^11.1.6",
     "happy-dom": "^15.11.7",
     "husky": "^9.1.7",
