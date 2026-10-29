@@ -17,7 +17,13 @@ Served via `netlify.toml` on the production shell. A slightly looser meta CSP li
 - `script-src 'self'` in production. No inline scripts in the built bundle.
 - `img-src 'self' data: https://*.tile.openstreetmap.org` allows Leaflet tiles.
 - `connect-src` allows `self`, local Keycloak (dev only), and Sentry telemetry (`*.sentry.io`).
-- `frame-ancestors 'none'` forbids embedding.
+- `frame-ancestors 'none'` forbids embedding. **Header only, on purpose.** Browsers ignore
+  `frame-ancestors` when it is delivered in a `<meta>` element, and Chrome logs that as a
+  console *error*. The meta CSP in `index.html` therefore omits it: the local preview that
+  Lighthouse audits in CI serves no headers, so the ignored directive was scoring the
+  `errors-in-console` assertion at 0 and failing the `lighthouse` job on every pull request.
+  The protection itself is unchanged, delivered by `netlify.toml` together with
+  `X-Frame-Options: DENY`.
 - `object-src 'none'` kills Flash and legacy embed vectors.
 
 ### Other headers
