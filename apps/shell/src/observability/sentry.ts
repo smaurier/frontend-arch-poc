@@ -17,7 +17,6 @@ export function initSentry(app: App): boolean {
     replaysSessionSampleRate: 0,
     replaysOnErrorSampleRate: 0,
     tracePropagationTargets: [/^\/api\//],
-    sendDefaultPii: false,
   });
 
   initialized = true;

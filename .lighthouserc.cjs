@@ -39,6 +39,10 @@ module.exports = {
         // Leaflet map tiles are fixed-size images by design (OSM tile spec)
         'image-size-responsive': 'off',
         'modern-image-formats': 'warn',
+        // New "Insight" audit pulled in by the @lhci/cli 0.14->0.15 bump: scores a hard 0
+        // for a single-bundle demo shell with no deep critical request chain to analyze -
+        // same class of false negative as the other Insight audits above, tracked as warn
+        'network-dependency-tree-insight': 'warn',
       },
     },
     upload: {
