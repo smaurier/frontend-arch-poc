@@ -33,7 +33,7 @@
     "tailwindcss": "^4.0.0",
     "@tailwindcss/vite": "^4.0.0",
     "typescript": "^5.7.2",
-    "vite": "^6.0.5",
+    "vite": "^6.4.5",
     "vitest": "^5.0.5",
     "vue-tsc": "^3.3.14",
     "@axe-core/playwright": "^4.14.0",
