@@ -19,10 +19,10 @@
     "@frontend-arch-poc/composables": "workspace:*",
     "@frontend-arch-poc/tokens": "workspace:*",
     "@frontend-arch-poc/ui": "workspace:*",
-    "@sentry/vue": "^11.10.0",
+    "@sentry/vue": "^11.11.0",
     "oidc-client-ts": "^3.1.0",
-    "vue": "^3.5.44",
-    "vue-i18n": "^11.4.16"
+    "vue": "^3.5.45",
+    "vue-i18n": "^11.4.18"
   },
   "devDependencies": {
     "@frontend-arch-poc/config": "workspace:*",
@@ -30,19 +30,19 @@
     "@vue/test-utils": "^2.5.1",
     "eslint": "^10.13.0",
     "happy-dom": "^21.0.4",
-    "tailwindcss": "^4.0.0",
-    "@tailwindcss/vite": "^4.0.0",
+    "tailwindcss": "^4.3.4",
+    "@tailwindcss/vite": "^4.3.4",
     "typescript": "^6.0.3",
     "vite": "^6.4.5",
-    "vitest": "^5.0.5",
+    "vitest": "^5.1.0",
     "vue-tsc": "^3.3.14",
     "@axe-core/playwright": "^4.14.0",
-    "@playwright/test": "^1.64.1",
+    "@playwright/test": "^1.65.0",
     "@types/node": "^22.10.5",
-    "storybook": "^10.6.5",
-    "@storybook/vue3": "^10.6.5",
-    "@storybook/vue3-vite": "^10.6.5",
-    "@storybook/addon-a11y": "10.6.5",
-    "@storybook/addon-onboarding": "10.6.5"
+    "storybook": "^10.6.6",
+    "@storybook/vue3": "^10.6.6",
+    "@storybook/vue3-vite": "^10.6.6",
+    "@storybook/addon-a11y": "10.6.6",
+    "@storybook/addon-onboarding": "10.6.6"
   }
 }
