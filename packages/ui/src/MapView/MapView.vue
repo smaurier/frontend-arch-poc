@@ -44,6 +44,10 @@ onMounted(() => {
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; OpenStreetMap contributors',
     maxZoom: 19,
+    // Single origin on purpose: OSM serves tiles over h2, where Leaflet's default
+    // 'abc' sharding buys no parallelism and costs a DNS+TLS handshake per extra
+    // subdomain. The one origin is preconnected in index.html. See ADR 0017.
+    subdomains: ['a'],
   }).addTo(mapInstance);
   renderMarkers();
 });
